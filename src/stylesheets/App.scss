@@ -1,3 +1,5 @@
+@import "variables.scss";
+
 .App {
   text-align: center;
 }
@@ -31,3 +33,17 @@
     transform: rotate(360deg);
   }
 }
+
+nav {
+  background: $nav-bg-color;
+}
+
+.btn-primary {
+  background-color: $brand-primary;
+  border-color: $brand-primary;
+}
+
+.text-primary {
+  color: $brand-primary !important;
+}
+
