@@ -49,6 +49,31 @@ nav {
 
 .brand {
   font-size: 30px;
-  font-weight: bold;
 }
 
+.help-link{
+  font-size: 30px;
+  color: $brand-primary;
+}
+
+.header-text, .question-text {
+  font-size: 1.15rem;
+  max-width: 31.25rem;
+  font-weight: 400;
+  padding: 0.625rem 0px;
+  color: $text-default;
+}
+
+.page-container{
+  text-align: center;
+}
+
+.error-msg {
+    color: $error-color;
+}
+
+// Buttons
+.jumbo-btn{
+  width: 200px;
+  margin: 10px;
+}

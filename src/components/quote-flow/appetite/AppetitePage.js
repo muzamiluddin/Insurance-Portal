@@ -6,30 +6,22 @@ import { Formik, withFormik, Field } from 'formik';
 import * as Yup from 'yup';
 import { DisplayFormikState } from "../../common/helper";
 import ClassificationSelect from "../../common/classification_select";
+import './appetite.scss';
 
 const formikEnhancer = withFormik({
     validationSchema: Yup.object().shape({
-        email: Yup.string()
-            .email('Invalid email address')
-            .required('Email is required!'),
-        topics: Yup.array()
-            .min(1, 'Pick at least 1 tag')
-            .of(
-                Yup.object().shape({
-                    label: Yup.string().required(),
-                    value: Yup.string().required(),
-                })
-            )
+        classification: Yup.string()
+            .ensure()
+            .required("Classification is required!")
             .nullable(),
     }),
     mapPropsToValues: props => ({
-        email: '',
-        topics: [],
+        classification: ''
     }),
     handleSubmit: (values, { setSubmitting }) => {
         const payload = {
             ...values,
-            topics: values.topics.map(t => t.value),
+            classification: values.classification.value,
         };
         setTimeout(() => {
             alert(JSON.stringify(payload, null, 2));
@@ -44,54 +36,39 @@ class AppetitePage extends React.Component {
         super(props);
     };
 
+    componentWillMount() {
+        this.props.dispatch(AppActions.newQuote());
+    }
+
+    displayAdditionalQuestions(){
+        console.log(this.props.values);
+    }
+
     render() {
         return (
-            <div class="row">
-                <div class="col-12">
-                    <div class="text-default">
-                    Relax, We got you covered...
-                    </div>
-                    <div class="text-default">
-                    What's your business about?
+            <div className="row">
+                <div className="col-12 h-100 d-flex justify-content-center">
+                    <div className="question-text">
+                        Relax. We've got you covered. What's your business about?
                     </div>
                 </div>
-                <form onSubmit={this.props.handleSubmit}>
-                    <label htmlFor="email" style={{ display: 'block' }}>
-                        Email
-                </label>
-                    <input
-                        id="email"
-                        placeholder="Enter your email"
-                        type="email"
-                        value={this.props.values.email}
-                        onChange={this.props.handleChange}
-                        onBlur={this.props.handleBlur}
-                    />
-                    {this.props.errors.email &&
-                        this.props.touched.email && (
-                            <div style={{ color: 'red', marginTop: '.5rem' }}>{this.props.errors.email}</div>
-                        )}
-                    <ClassificationSelect
-                        value={this.props.values.topics}
-                        onChange={this.props.setFieldValue}
-                        onBlur={this.props.setFieldTouched}
-                        error={this.props.errors.topics}
-                        touched={this.props.touched.topics}
-                    />
-                    <button
-                        type="button"
-                        className="outline"
-                        onClick={this.props.handleReset}
-                        disabled={!this.props.dirty || this.props.isSubmitting}
-                    >
-                        Reset
-            </button>
-                    <button type="submit" disabled={this.props.isSubmitting}>
-                        Submit
-            </button>
+                
+                <div className="col-12 h-100 d-flex justify-content-center">
+                    <form onSubmit={this.props.handleSubmit} className="classification-select-container">
+                        <ClassificationSelect
+                            value={this.props.values.classification}
+                            onChange={this.props.setFieldValue}
+                            onBlur={this.props.setFieldTouched}
+                            error={this.props.errors.classification}
+                            touched={this.props.touched.classification}
+                        />
+                        <button onClick={this.displayAdditionalQuestions()} className="btn btn-primary jumbo-btn">
+                            Next Question
+                        </button>
 
-                    <DisplayFormikState {...this.props} />
-                </form>
+                        <DisplayFormikState {...this.props} />
+                    </form>
+                </div>
 
             </div>
         );

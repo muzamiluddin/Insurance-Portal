@@ -5,7 +5,7 @@ import { NavLink, BrowserRouter } from 'react-router-dom';
 class Header extends React.Component {
     headerLinks() {
         return (
-            <div className="row pull-right w-100 ml-1">
+            <div className="row w-100 ml-1">
                 <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
                 </button>
@@ -24,23 +24,34 @@ class Header extends React.Component {
                     </ul>
                 </div>
 
-                <div className="pull-right">
-                    <NavLink to="/new-quote" className="nav-link btn btn-primary" >
-                        <i className="fa fa-plus" />
-                        {" New Quote"}
-                    </NavLink>
-                </div>
             </div>
+        );
+    }
+
+    helpLinks(){
+        return (
+            <span className="help-link pull-right">
+                <button className="btn btn-primary">
+                   <i className="fa fa-phone" aria-hidden="true"></i>
+                </button>
+            </span>
         );
     }
 
     render() {
         return (
             <nav className="navbar navbar-expand-md navbar-dark mb-4">
-                <span className="text-primary brand" href="#">
-                    ACME
-                </span>
-                { !this.props.app.QuoteInProgress && this.headerLinks() }
+                <div className="row w-100">
+                    <div className="col-2 text-primary brand pull-left">
+                        ACME
+                    </div>
+                    <div className="col-9">
+                        { !this.props.app.QuoteInProgress && this.headerLinks() }
+                    </div>
+                    <div className="col-1 pull-right">
+                        { this.helpLinks()}
+                    </div>
+                </div>
             </nav>
         );
     }

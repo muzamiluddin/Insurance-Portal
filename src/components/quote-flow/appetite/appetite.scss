@@ -1,0 +1,12 @@
+@import "../../../stylesheets/variables.scss";
+
+.classification-select-container {
+    width: 400px;
+}
+
+.has-error > .css-yk16xz-control {
+    border: 1px solid;
+    border-color: $error-color;
+}
+
+

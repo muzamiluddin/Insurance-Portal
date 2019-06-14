@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink, BrowserRouter } from 'react-router-dom';
 
 class QuotesPage extends React.Component {
 
@@ -6,6 +7,16 @@ class QuotesPage extends React.Component {
         return (
             <div class="page">
                 <h3>Quotes</h3>
+                <div class="row">
+                    <div class="col-2">
+                        <NavLink to="/new-quote" className="nav-link btn btn-primary" >
+                            <i className="fa fa-plus" />
+                            {" New Quote"}
+                        </NavLink>
+
+                    </div>
+
+                </div>
                 <table class="table">
                     <thead>
                         <tr>

@@ -1,41 +1,50 @@
 import React from "react";
 import Select from 'react-select';
+import {ErrorMessage} from 'formik';
 
 const options = [
-    { value: 'Food', label: 'Food' },
-    { value: 'Being Fabulous', label: 'Being Fabulous' },
-    { value: 'Ken Wheeler', label: 'Ken Wheeler' },
-    { value: 'ReasonML', label: 'ReasonML' },
-    { value: 'Unicorns', label: 'Unicorns' },
-    { value: 'Kittens', label: 'Kittens' },
+    { value: 'restaurant', label: 'Restaurant' },
+    { value: 'clothing_store', label: 'Clothing Store' },
+    { value: 'apartment', label: 'Apartment' },
+    { value: 'retail', label: 'Retail' },
+    { value: 'grocery_store', label: 'Grocery Store' },
+    { value: 'salon', label: 'Nail Salon' },
 ];
 
 class ClassificationSelect extends React.Component {
     handleChange = value => {
         // this is going to call setFieldValue and manually update values.topcis
-        this.props.onChange('topics', value);
+        this.props.onChange('classification', value);
     };
 
     handleBlur = () => {
         // this is going to call setFieldTouched and manually update touched.topcis
-        this.props.onBlur('topics', true);
+        this.props.onBlur('classification', true);
     };
+
+    errorClass = () => {
+        if (this.props.error && this.props.touched) {
+        debugger
+            return 'has-error'
+        }
+    }
 
     render() {
         return (
-            <div style={{ margin: '1rem 0' }}>
-                <label htmlFor="color">Topics </label>
+            <div style={{ margin: '1rem 0' }} className="w-100">
                 <Select
-                    id="color"
+                    id="classification"
                     options={options}
                     onChange={this.handleChange}
                     onBlur={this.handleBlur}
                     value={this.props.value}
+                    placeholder="Ex: Retail, Restaurant"
+                    name="classification"
+                    className={this.errorClass()}
                 />
-                {!!this.props.error &&
-                    this.props.touched && (
-                        <div style={{ color: 'red', marginTop: '.5rem' }}>{this.props.error}</div>
-                    )}
+                <span className="error-msg">
+                   <ErrorMessage name="classification" />
+                </span>
             </div>
         );
     }
