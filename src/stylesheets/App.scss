@@ -43,8 +43,21 @@ nav {
   border-color: $brand-primary;
 }
 
+// Text Colors
 .text-primary {
   color: $brand-primary !important;
+}
+
+.text-third {
+    color: $text-third;
+}
+
+.text-fourth {
+    color: $text-fourth;
+}
+
+.text-fifth{
+    color: $text-fifth;
 }
 
 .brand {
@@ -75,5 +88,13 @@ nav {
 // Buttons
 .jumbo-btn{
   width: 200px;
+  margin: 10px;
+}
+
+// Icon Styling
+.product-icon {
+  font-size: 120px;
+  border: 1px solid grey;
+  padding: 10px;
   margin: 10px;
 }

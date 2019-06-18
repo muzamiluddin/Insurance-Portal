@@ -7,6 +7,7 @@ import ConfigureStore from './redux/configureStore';
 import { Provider as ReduxProvider } from 'react-redux';
 import QuotesPage from './components/quotes/QuotesPage';
 import AppetitePage from './components/quote-flow/appetite/AppetitePage';
+import ProductsPage from './components/quote-flow/products/ProductsPage';
 
 const store = ConfigureStore();
 
@@ -21,6 +22,7 @@ function App() {
             <Route path='/Quotes' component={QuotesPage} />
             <Route path='/Policies' component={PoliciesPage} />
             <Route path='/new-quote' component={AppetitePage} />
+            <Route path='/products' component={ProductsPage} />
           </Switch>
         </BrowserRouter>
       </div>

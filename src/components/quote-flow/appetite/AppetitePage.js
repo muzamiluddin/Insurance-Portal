@@ -8,6 +8,7 @@ import ClassificationSelect from "../../common/classification_select";
 import './appetite.scss';
 import ax from "../../../Utils/API";
 import { AppetiteMetadata } from "../../../Utils/metadata";
+import { Redirect } from 'react-router-dom';
 
 
 
@@ -50,10 +51,9 @@ class AppetitePage extends React.Component {
         this.props.dispatch(AppActions.newQuote());
     }
 
-    displayAvailableProducts(){
-        if(this.props.errors.length > 0){
-            return;
-        }
+    handleSubmit(){
+        console.log("trying to submit a form");
+        this.props.history.push('/business')
     }
 
     displayAdditionalQuestions = () => {
@@ -107,7 +107,7 @@ class AppetitePage extends React.Component {
                     </div>
                 })}
 
-                <button onClick={() => this.displayAvailableProducts()} className="btn btn-primary jumbo-btn">
+                <button onClick={() => this.handleSubmit()} className="btn btn-primary jumbo-btn">
                     Submit
                 </button>
             </div>
@@ -135,8 +135,6 @@ class AppetitePage extends React.Component {
                     <button onClick={() => this.displayAdditionalQuestions()} className="btn btn-primary jumbo-btn" type="button">
                         Next Question
                     </button>
-                    <DisplayFormikState {...this.props} />
-
                 </div>
             </div>
         </div>
@@ -145,7 +143,7 @@ class AppetitePage extends React.Component {
     render() {
         return (
             <div>
-                <form onSubmit={this.props.handleSubmit} >
+                <form onSubmit={() => this.handleSubmit()} >
                     {this.state.displayClassification && this.classificationSection()}
                     {!this.state.displayClassification && this.questionSet()}
                 </form>
