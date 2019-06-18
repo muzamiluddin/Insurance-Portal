@@ -24,7 +24,6 @@ class ClassificationSelect extends React.Component {
 
     errorClass = () => {
         if (this.props.error && this.props.touched) {
-        debugger
             return 'has-error'
         }
     }

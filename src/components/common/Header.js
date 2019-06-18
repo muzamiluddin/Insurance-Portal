@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { NavLink, BrowserRouter } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 class Header extends React.Component {
     headerLinks() {
@@ -43,7 +43,7 @@ class Header extends React.Component {
             <nav className="navbar navbar-expand-md navbar-dark mb-4">
                 <div className="row w-100">
                     <div className="col-2 text-primary brand pull-left">
-                        ACME
+                        Guideone
                     </div>
                     <div className="col-9">
                         { !this.props.app.QuoteInProgress && this.headerLinks() }

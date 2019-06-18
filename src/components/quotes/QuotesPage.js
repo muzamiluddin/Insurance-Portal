@@ -1,14 +1,14 @@
 import React from "react";
-import { NavLink, BrowserRouter } from 'react-router-dom';
+import { NavLink} from 'react-router-dom';
 
 class QuotesPage extends React.Component {
 
     render() {
         return (
-            <div class="page">
+            <div className="page">
                 <h3>Quotes</h3>
-                <div class="row">
-                    <div class="col-2">
+                <div className="row">
+                    <div className="col-2">
                         <NavLink to="/new-quote" className="nav-link btn btn-primary" >
                             <i className="fa fa-plus" />
                             {" New Quote"}
@@ -17,7 +17,7 @@ class QuotesPage extends React.Component {
                     </div>
 
                 </div>
-                <table class="table">
+                <table className="table">
                     <thead>
                         <tr>
                             <th scope="col">Policy Number</th>
@@ -26,7 +26,7 @@ class QuotesPage extends React.Component {
                         </tr>
                     </thead>
                     <tbody>
-                        <tr class="table-active">
+                        <tr className="table-active">
                             <th scope="row">Active</th>
                             <td>Cell</td>
                             <td>Cell</td>
@@ -38,42 +38,42 @@ class QuotesPage extends React.Component {
                         </tr>
 
 
-                        <tr class="table-primary">
+                        <tr className="table-primary">
                             <th scope="row">Primary</th>
                             <td>Cell</td>
                             <td>Cell</td>
                         </tr>
-                        <tr class="table-secondary">
+                        <tr className="table-secondary">
                             <th scope="row">Secondary</th>
                             <td>Cell</td>
                             <td>Cell</td>
                         </tr>
-                        <tr class="table-success">
+                        <tr className="table-success">
                             <th scope="row">Success</th>
                             <td>Cell</td>
                             <td>Cell</td>
                         </tr>
-                        <tr class="table-danger">
+                        <tr className="table-danger">
                             <th scope="row">Danger</th>
                             <td>Cell</td>
                             <td>Cell</td>
                         </tr>
-                        <tr class="table-warning">
+                        <tr className="table-warning">
                             <th scope="row">Warning</th>
                             <td>Cell</td>
                             <td>Cell</td>
                         </tr>
-                        <tr class="table-info">
+                        <tr className="table-info">
                             <th scope="row">Info</th>
                             <td>Cell</td>
                             <td>Cell</td>
                         </tr>
-                        <tr class="table-light">
+                        <tr className="table-light">
                             <th scope="row">Light</th>
                             <td>Cell</td>
                             <td>Cell</td>
                         </tr>
-                        <tr class="table-dark">
+                        <tr className="table-dark">
                             <th scope="row">Dark</th>
                             <td>Cell</td>
                             <td>Cell</td>
