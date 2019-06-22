@@ -53,7 +53,7 @@ class AppetitePage extends React.Component {
 
     handleSubmit(){
         console.log("trying to submit a form");
-        this.props.history.push('/business')
+        this.props.history.push('/products')
     }
 
     displayAdditionalQuestions = () => {
@@ -62,7 +62,6 @@ class AppetitePage extends React.Component {
             "method": "fetchBOPAppetiteQuestions",
             "params": ["Retail", "IA"],
         }).then(function (response) {
-
             const questionKeys = response.data.result.answers;
             let questionSet = [];
             for (const key in questionKeys) {
@@ -80,12 +79,12 @@ class AppetitePage extends React.Component {
                 <div className="col-12 d-flex justify-content-center">
                     <div className="question-text">
                         A couple more questions...
-                            </div>
+                    </div>
                 </div>
 
                 {this.state.questions.map((question) => {
                     return <div className="row mt-3">
-                        <div className="col-12">
+                        <div className="col-12 form-group">
                             <div key={question.id}>
                                 <div className="row">
                                     <div className="col-12 justify-content-center">
@@ -96,7 +95,7 @@ class AppetitePage extends React.Component {
                                 </div>
                                 <div className="row">
                                     <div className="col-12 justify-content-center">
-                                        <Field type={question.type} name={question.id} />
+                                        <Field type={question.type} name={question.id} className="form-control align-center" />
                                         <div className="error-msg">
                                             <ErrorMessage name={question.id} />
                                         </div>

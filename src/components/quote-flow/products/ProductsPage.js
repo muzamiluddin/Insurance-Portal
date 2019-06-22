@@ -10,24 +10,30 @@ class ProductsPage extends React.Component {
 
     render() {
         return (
-            <div className="row justify-content-center">
-                <div className="col-12 d-flex justify-content-center">
+            <div className="container">
+                <div className="col-12">
                     <div className="question-text">
-                        Select a product to get a quote...
+                        Congrats! You are eligible for following products -  
                     </div>
                 </div>
 
-                <div className="col-12">
-                    <NavLink to="/business" className="btn product-icon text-primary" >
-                        <i className="far fa-building" />
-                    </NavLink>
-                    <button className="btn product-icon text-third">
-                        <i className="fas fa-truck-moving"></i>
-                    </button>
-                    <button className="btn product-icon text-default">
-                        <i className="fas fa-umbrella"></i>
-                    </button>
-
+                <div className="col">
+                    <div className="col">
+                        <NavLink to="/business" className="btn product-icon text-primary" >
+                            <i className="far fa-building" />
+                        </NavLink>
+                        <h4>BOP</h4>
+                    </div>
+                    <div className="col">
+                        <button className="btn product-icon text-third">
+                            <i className="fas fa-truck-moving"></i>
+                        </button>
+                    </div>
+                    <div className="col">
+                        <button className="btn product-icon text-default">
+                            <i className="fas fa-umbrella"></i>
+                        </button>
+                    </div>
                 </div>
             </div>
         );
