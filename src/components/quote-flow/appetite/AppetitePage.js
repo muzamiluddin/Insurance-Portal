@@ -52,7 +52,6 @@ class AppetitePage extends React.Component {
     }
 
     handleSubmit(){
-        console.log("trying to submit a form");
         this.props.history.push('/products')
     }
 
@@ -74,7 +73,7 @@ class AppetitePage extends React.Component {
     }
 
     questionSet() {
-        return <div className="row">
+        return <div className="row appetite-question-set">
             <div className="col-12 justify-content-center classification-select-container">
                 <div className="col-12 d-flex justify-content-center">
                     <div className="question-text">

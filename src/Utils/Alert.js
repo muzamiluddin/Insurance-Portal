@@ -4,7 +4,7 @@ import 'toastr/build/toastr.min.css';
 export class Alert {
     static success(message) {
         toastr.options = {
-            positionClass: 'toast-top-full-width',
+            positionClass: 'toast-top-right',
             hideDuration: 300,
             timeOut: 5000
         };

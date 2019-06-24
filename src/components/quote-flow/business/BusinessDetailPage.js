@@ -20,6 +20,7 @@ const formikEnhancer = withFormik({
                           SubmissionUtil.createSubmission(response.data.result).then(function(submissionResponse){
                               Alert.success("Submission created successfully");
                               props.dispatch(AppActions.SubmissionAfterSave(submissionResponse.data.result))
+                              props.history.push('/eligibility')
                           });
                       });
     },
@@ -63,7 +64,10 @@ const formikEnhancer = withFormik({
 class BusinessDetailPage extends React.Component {
     constructor(props) {
         super(props);
-        let container;
+    }
+
+    componentDidMount(){
+        this.props.dispatch(AppActions.PageLoaded('BusinessInfo'));
     }
 
     render() {

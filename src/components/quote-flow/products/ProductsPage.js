@@ -19,7 +19,7 @@ class ProductsPage extends React.Component {
 
                 <div className="col">
                     <div className="col">
-                        <NavLink to="/business" className="btn product-icon text-primary" >
+                        <NavLink to="/business-info" className="btn product-icon text-primary" >
                             <i className="far fa-building" />
                         </NavLink>
                         <h4>BOP</h4>
