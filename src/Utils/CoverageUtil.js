@@ -8,7 +8,6 @@ export class CoverageUtil {
         let cov = _.findWhere(clonedState.lineCoverages, {publicID: payload.publicID})
         cov.selected = !!payload.value
         _.extend(clonedState.lineCoverages, cov)
-        debugger
         return clonedState
     }
     

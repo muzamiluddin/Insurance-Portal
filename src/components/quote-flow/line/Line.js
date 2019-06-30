@@ -46,39 +46,22 @@ class LineDetailPage extends React.Component {
         }));
     }
 
-    handleChange = (e) => {
-        const target = e.target;
-        let value = target.checked;
-        const name = target.name;
-        e.persist();
-        this.updateLineCov({publicID: name, value: value})
-    }
-
     updateLineCov = (payload) => {
         this.props.dispatch(AppActions.updateLineCoverage(payload));
     }
 
-    // Validate Question on Blur and update State
-    handleBlur = (e) => {
-        const target = e.target;
-        let value = target.value;
-        const name = target.name;
-        e.persist();
-    }
-
     handleCovChange(e) {
         const target = e.target;
-        let value = target.value;
+        let value = target.checked;
         const name = target.name;
         e.persist();
         this.updateLineCov({publicID: name, value: value});
     }
 
     renderCovTerms(cov) {
-        if (_.isUndefined(cov) || !cov.hasTerms){
+        if (!cov.hasTerms || !cov.selected){
             return;
         }
-        debugger
         return Object.keys(cov.terms).map((covTermIndex) => {
             return <div className="col-md-6">
                 {this.renderCovTerm(cov.terms[covTermIndex])}
@@ -91,7 +74,6 @@ class LineDetailPage extends React.Component {
     }
 
     renderCovTerm(covTerm) {
-        debugger
         return <div className="row">
             <div className="col">
                 {covTerm.name}
@@ -114,8 +96,6 @@ class LineDetailPage extends React.Component {
     }
 
     renderCoverage(cov) {
-        console.log("I am rendering coverage");
-        console.log(cov);
         return <div class="row coverage-row">
             <div class="col-12 col-title text-bold">
                 <label>
@@ -138,7 +118,6 @@ class LineDetailPage extends React.Component {
     }
 
     renderLineCoverages() {
-            debugger
         if (!_.isUndefined(this.props.lineCoverages)) {
             let covs = this.props.lineCoverages;
             return Object.keys(covs).map((index) => {
