@@ -121,3 +121,16 @@ nav {
   box-shadow:0px 0px 10px rgba(0,0,0,0.4);
 }
 
+.question-row {
+  padding: 5px;
+  margin: 5px;
+  border-bottom: 1px solid grey;
+}
+
+.error-toggle .react-toggle-track{
+  background-color: red;
+}
+
+.coverage-row{
+  border: 1px solid grey;
+}

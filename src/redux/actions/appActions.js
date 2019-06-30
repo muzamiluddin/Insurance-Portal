@@ -30,3 +30,22 @@ export function PageLoaded(name){
              }
     }
 }
+
+export function EligibilityBeforeSave(values){
+    return { type: 'ELIGIBILITY_BEFORE_SAVE', 
+             payload: {
+                quoteInProgress: true,
+                questions: values
+             }
+    }
+}
+
+export function FetchLineCoverages(values){
+    return { type: 'FETCH_LINE_COVERAGES', 
+             payload: values
+    }
+}
+
+export function updateLineCoverage(values){
+    return { type: 'UPDATE_LINE_COVERAGE', payload: values }
+}

@@ -6,7 +6,10 @@ const ax = axios.create({
     headers: {
         'Content-Type': 'application/json', 
         'Authorization': 'Basic c3U6Z3c=', 
-        'Access-Control-Allow-Origin': '*'
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Credentials': 'true',
+        'Access-Control-Allow-Methods':  'OPTIONS, GET, POST',
+        'Access-Control-Allow-Headers': 'Content-Type, Depth, User-Agent, X-File-Size, X-Requested-With, If-Modified-Since, X-File-Name, Cache-Control'
 },
     transformRequest: [
         (data, headers) => {

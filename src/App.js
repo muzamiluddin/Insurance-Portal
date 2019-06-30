@@ -10,6 +10,7 @@ import AppetitePage from './components/quote-flow/appetite/AppetitePage';
 import ProductsPage from './components/quote-flow/products/ProductsPage';
 import BusinessDetailPage from './components/quote-flow/business/BusinessDetailPage';
 import EligibilityDetailPage from './components/quote-flow/eligibility/EligibilityDetailPage';
+import LineDetailpage from './components/quote-flow/line/Line';
 import TestDetailPage from './components/TestDetail';
 
 const store = ConfigureStore();
@@ -28,6 +29,7 @@ function App() {
             <Route path='/products' component={ProductsPage} />
             <Route path='/business-info' component={BusinessDetailPage} />
             <Route path='/eligibility' component={EligibilityDetailPage} />
+            <Route path='/line' component={LineDetailpage} />
             <Route path='/test' component={TestDetailPage} />
           </Switch>
         </BrowserRouter>
