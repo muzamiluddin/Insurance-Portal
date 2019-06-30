@@ -19,6 +19,9 @@ export default function appReducer(state = [], action) {
         case "UPDATE_LINE_COVERAGE":
             let updatedState = CoverageUtil.updateLineCoverage(state, action.payload);
             return Object.assign({}, state, updatedState); 
+        case "UPDATE_LINE_COVERAGE_TERM":
+            let newState = CoverageUtil.updateLineCoverageTerm(state, action.payload);
+            return Object.assign({}, state, newState); 
         default:
             return state;
     }

@@ -49,3 +49,7 @@ export function FetchLineCoverages(values){
 export function updateLineCoverage(values){
     return { type: 'UPDATE_LINE_COVERAGE', payload: values }
 }
+
+export function updateLineCoverageTerm(values){
+    return { type: 'UPDATE_LINE_COVERAGE_TERM', payload: values }
+}

@@ -49,6 +49,10 @@ class LineDetailPage extends React.Component {
     updateLineCov = (payload) => {
         this.props.dispatch(AppActions.updateLineCoverage(payload));
     }
+    
+    updateLineCovTerm = (payload) => {
+        this.props.dispatch(AppActions.updateLineCoverageTerm(payload));
+    }
 
     handleCovChange(e) {
         const target = e.target;
@@ -64,25 +68,30 @@ class LineDetailPage extends React.Component {
         }
         return Object.keys(cov.terms).map((covTermIndex) => {
             return <div className="col-md-6">
-                {this.renderCovTerm(cov.terms[covTermIndex])}
+                {this.renderCovTerm(cov.terms[covTermIndex], cov)}
             </div>
         })
     }
 
-    handleCovTermChange(e){
-
+    handleCovTermChange(e, cov){
+        const target = e.target;
+        let value = target.value;
+        const name = target.name;
+        e.persist();
+        console.log("You updated cov term");
+        this.updateLineCovTerm({covPublicID: cov.publicID, covTermPublicID: name, chosenTerm: value })
     }
 
-    renderCovTerm(covTerm) {
+    renderCovTerm(covTerm, cov) {
         return <div className="row">
             <div className="col">
                 {covTerm.name}
             </div>
             <div className="col">
                 <Select
-                    value={covTerm.chosenTerm} onChange={this.handleCovTermChange}
+                    value={covTerm.chosenTerm} onChange={e => this.handleCovTermChange(e, cov)}
                     inputProps={{
-                        name: covTerm.name
+                        name: covTerm.publicID
                     }}
                 >
                     {covTerm.options.map((option) => {
