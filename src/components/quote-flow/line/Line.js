@@ -10,6 +10,7 @@ import Toggle from 'react-toggle';
 import "react-toggle/style.css"
 import { Alert } from "../../../Utils/Alert";
 import { CoverageUtil } from "../../../Utils/CoverageUtil";
+import { CoverageUtilAPI } from "../../../Utils/CoverageUtilAPI";
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Container from '@material-ui/core/Container';
 import Select from '@material-ui/core/Select';
@@ -51,15 +52,28 @@ class LineDetailPage extends React.Component {
     }
     
     updateLineCovTerm = (payload) => {
-        this.props.dispatch(AppActions.updateLineCoverageTerm(payload));
     }
 
     handleCovChange(e) {
+        e.persist();
+        this.updateCoverage(e)
+    }
+
+    updateCoverage(e){
         const target = e.target;
         let value = target.checked;
         const name = target.name;
-        e.persist();
-        this.updateLineCov({publicID: name, value: value});
+        let covObj = {
+            publicID: name,
+            coverageCategoryCode: target.getAttribute('coveragecategorycode'),
+            updated: true,
+            selected: value
+        };
+
+        let currentObj = this;
+        CoverageUtilAPI.updateLineCoverage(covObj).then(function (response) {
+            currentObj.props.dispatch(AppActions.updateLineCoverage(response.data.result))
+        })
     }
 
     renderCovTerms(cov) {
@@ -78,8 +92,7 @@ class LineDetailPage extends React.Component {
         let value = target.value;
         const name = target.name;
         e.persist();
-        console.log("You updated cov term");
-        this.updateLineCovTerm({covPublicID: cov.publicID, covTermPublicID: name, chosenTerm: value })
+        this.props.dispatch(AppActions.updateLineCoverageTerm({covPublicID: cov.publicID, covTermPublicID: name, chosenTerm: value }));
     }
 
     renderCovTerm(covTerm, cov) {
@@ -105,6 +118,10 @@ class LineDetailPage extends React.Component {
     }
 
     renderCoverage(cov) {
+        if (_.isUndefined(cov.publicID)){
+            return
+        }
+
         return <div class="row coverage-row">
             <div class="col-12 col-title text-bold">
                 <label>
@@ -113,7 +130,9 @@ class LineDetailPage extends React.Component {
                         onChange={(e) => this.handleCovChange(e)}
                         inputProps={{
                             'name': cov.publicID,
+                            'coverageCategoryCode': cov.coverageCategoryCode,
                             'aria-label': 'primary checkbox',
+                            'publicID': cov.publicID
                         }}
                     />
                     {cov.name}

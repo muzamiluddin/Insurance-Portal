@@ -6,7 +6,8 @@ export class CoverageUtil {
     static updateLineCoverage(state, payload){
         let clonedState = $.cloneDeep(state);
         let cov = _.findWhere(clonedState.lineCoverages, {publicID: payload.publicID})
-        cov.selected = !!payload.value
+        cov.selected = payload.selected
+        cov.terms = payload.terms
         _.extend(clonedState.lineCoverages, cov)
         return clonedState
     }
@@ -28,4 +29,5 @@ export class CoverageUtil {
             "params": ["0000129120"]
         })
     }
+    
 }
