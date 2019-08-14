@@ -13,8 +13,8 @@ class Header extends React.Component {
                     <div className="collapse navbar-collapse" id="navbarCollapse">
                         <ul className="navbar-nav mr-auto">
                             <span className="label label-info">
-                                Account #  {this.props.app.account.accountNumber}
-                            </span>
+                                Account #  {this.props.app.account.accountNumber} |
+                            </span>  
                             <span className="label label-info">
                                 Submission #  {this.props.app.submissionNumber}
                             </span>

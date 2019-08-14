@@ -72,7 +72,7 @@ class EligibilityDetailPage extends React.Component {
 
     // Get the question value
     questionValue(ID){
-        return this.state.questions[ID].value
+        return !!this.state.questions[ID].value
     }
 
     errorClass(hasError){
@@ -113,11 +113,12 @@ class EligibilityDetailPage extends React.Component {
 
     handleSubmit(e){
         e.preventDefault();
+        let parentObj = this;
         if (this.validateForm()){
             this.props.dispatch(AppActions.EligibilityBeforeSave(this.state.questions));
             QuestionUtil.updateEligibilityQuestion(this.state.questions).then(function(response){
                 Alert.success("Eligibility Questions updated successfully");
-                console.log(response);
+                parentObj.props.history.push('/line')
             })
         } else{
             console.log("Error has occured");
@@ -143,7 +144,7 @@ class EligibilityDetailPage extends React.Component {
     }
 
     validateQuestion(question){
-        if ((!question.value || question.value == '')){
+        if ((question.value == '')){
             question.error = true;
             question.errorMessage = 'Field is required!';
             question.touched = true;
